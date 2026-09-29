@@ -6,7 +6,7 @@ Dự án thực hiện toàn bộ quy trình từ thu thập dữ liệu, làm s
 
 ---
 
-## 1. Mục tiêu dự án
+## Mục tiêu dự án
 
 Dự án được xây dựng nhằm:
 
@@ -19,11 +19,11 @@ Dự án được xây dựng nhằm:
 * Cung cấp API thông qua **FastAPI**.
 * Hiển thị dữ liệu và kết quả dự đoán trên Dashboard.
 
-> **Lưu ý:** Kết quả dự đoán chỉ phục vụ mục đích nghiên cứu và học tập, không phải khuyến nghị đầu tư.
+> **Lưu ý:** Kết quả dự đoán chỉ phục vụ mục đích nghiên cứu và học tập.
 
 ---
 
-# 2. Nguồn dữ liệu
+# Nguồn dữ liệu
 
 Nguồn dữ liệu chính của dự án là:
 
@@ -58,7 +58,7 @@ data/raw/gold_gc_f.csv
 
 ---
 
-# 3. Kiến trúc hệ thống
+# Kiến trúc hệ thống
 
 ```text
                     Yahoo Finance
@@ -108,52 +108,9 @@ data/raw/gold_gc_f.csv
                          │
                          ▼
                     Dashboard
-```
 
----
 
-# 4. Cấu trúc thư mục
-
-```text
-gold_prediction/
-│
-├── data/
-│   ├── raw/
-│   │   └── gold_gc_f.csv
-│   │
-│   └── processed/
-│       └── gold_features.csv
-│
-├── data_pipeline/
-│   ├── gold_collector.py
-│   ├── cleaner.py
-│   └── feature_engineering.py
-│
-├── ml/
-│   ├── train_xgboost.py
-│   ├── train_lstm.py
-│   └── predict.py
-│
-├── backend/
-│   └── main.py
-│
-├── frontend/
-│   └── Dashboard/
-│
-├── models/
-│   ├── xgboost_model.pkl
-│   └── lstm_model.keras
-│
-├── reports/
-│
-├── run_pipeline.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-# 5. Công nghệ sử dụng
+# Công nghệ sử dụng
 
 ## Backend
 
@@ -200,7 +157,7 @@ Các chỉ báo kỹ thuật được sử dụng:
 
 ---
 
-# 6. Các đặc trưng được tạo
+# Các đặc trưng được tạo
 
 Sau khi xử lý dữ liệu, hệ thống tạo ra nhiều đặc trưng phục vụ mô hình.
 
@@ -272,118 +229,7 @@ ATR_14
 
 ---
 
-# 7. Cài đặt
-
-## Yêu cầu
-
-Khuyến nghị sử dụng:
-
-```text
-Python 3.11
-```
-
-Kiểm tra Python:
-
-```powershell
-python --version
-```
-
-hoặc:
-
-```powershell
-py --version
-```
-
----
-
-## Cài đặt thư viện
-
-Mở PowerShell tại thư mục:
-
-```text
-D:\BaiTapLon\thoisu\gold_prediction\gold_prediction
-```
-
-Sau đó chạy:
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-Nếu máy có nhiều phiên bản Python, có thể sử dụng Python 3.11 trực tiếp:
-
-```powershell
-& "C:\Users\Dell\AppData\Local\Microsoft\WindowsApps\python3.11.exe" -m pip install -r requirements.txt
-```
-
----
-
-# 8. Chạy Data Pipeline
-
-## Bước 1: Thu thập dữ liệu
-
-Chạy:
-
-```powershell
-python data_pipeline/gold_collector.py
-```
-
-Dữ liệu được tải từ Yahoo Finance và lưu vào:
-
-```text
-data/raw/gold_gc_f.csv
-```
-
----
-
-## Bước 2: Làm sạch dữ liệu
-
-```powershell
-python data_pipeline/cleaner.py
-```
-
-Quá trình này thực hiện:
-
-* Xử lý dữ liệu thiếu.
-* Chuẩn hóa kiểu dữ liệu.
-* Chuyển các trường giá về dạng số.
-* Sắp xếp dữ liệu theo thời gian.
-
----
-
-## Bước 3: Feature Engineering
-
-```powershell
-python data_pipeline/feature_engineering.py
-```
-
-Kết quả được lưu tại:
-
-```text
-data/processed/gold_features.csv
-```
-
----
-
-# 9. Huấn luyện mô hình XGBoost
-
-Chạy:
-
-```powershell
-python ml/train_xgboost.py
-```
-
-Mô hình sau khi huấn luyện được lưu trong:
-
-```text
-models/
-```
-
-XGBoost được sử dụng để học mối quan hệ giữa các đặc trưng kỹ thuật và giá vàng.
-
----
-
-# 10. Huấn luyện mô hình LSTM
+# Huấn luyện mô hình LSTM
 
 Chạy:
 
@@ -401,7 +247,7 @@ models/
 
 ---
 
-# 11. Chạy dự đoán
+# Chạy dự đoán
 
 Sau khi huấn luyện mô hình:
 
@@ -412,109 +258,7 @@ python ml/predict.py
 Hệ thống sẽ sử dụng dữ liệu mới nhất để tạo dự báo.
 
 ---
-
-# 12. Chạy toàn bộ Pipeline
-
-Có thể chạy toàn bộ quy trình bằng:
-
-```powershell
-python run_pipeline.py
-```
-
-Pipeline:
-
-```text
-Collect
-   ↓
-Clean
-   ↓
-Feature Engineering
-   ↓
-Train Model
-   ↓
-Prediction
-```
-
----
-
-# 13. Chạy FastAPI
-
-Khởi động Backend:
-
-```powershell
-uvicorn backend.main:app --reload
-```
-
-Sau khi chạy thành công, API mặc định:
-
-```text
-http://127.0.0.1:8000
-```
-
-Swagger API:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
----
-
-# 14. API
-
-## Kiểm tra hệ thống
-
-```http
-GET /api/health
-```
-
-## Lấy dữ liệu lịch sử
-
-```http
-GET /api/history
-```
-
-## Lấy chỉ báo kỹ thuật
-
-```http
-GET /api/technical
-```
-
-## Dự đoán giá vàng
-
-```http
-GET /api/forecast
-```
-
-## Thông tin mô hình
-
-```http
-GET /api/model
-```
-
----
-
-# 15. Dashboard
-<img width="402" height="411" alt="image" src="https://github.com/user-attachments/assets/b270f677-8987-489f-9de3-56a87dd2edb2" />
-
-Dashboard được sử dụng để trực quan hóa:
-
-* Giá vàng lịch sử.
-* Xu hướng giá.
-* Các chỉ báo kỹ thuật.
-* Kết quả dự đoán.
-* Thông tin mô hình.
-
-Frontend nằm tại:
-
-```text
-frontend/Dashboard/
-```
-
-Backend FastAPI cần được chạy trước khi sử dụng Dashboard.
-
----
-
-# 16. Quy trình dự đoán
+# Quy trình dự đoán
 
 Hệ thống thực hiện quy trình:
 
@@ -544,7 +288,7 @@ Dự án sử dụng **Time Series Split** thay vì chia dữ liệu ngẫu nhi�
 
 ---
 
-# 17. Đánh giá mô hình
+# Đánh giá mô hình
 
 Các chỉ số đánh giá có thể sử dụng:
 
@@ -584,7 +328,7 @@ MAPE biểu diễn sai số dưới dạng phần trăm.
 
 ---
 
-# 18. Các mô hình
+# Các mô hình
 
 ## XGBoost
 
@@ -624,7 +368,7 @@ Ngày 5 ─┘
 
 ---
 
-# 19. Lưu ý
+# Lưu ý
 
 Mô hình Machine Learning không đảm bảo dự đoán chính xác giá vàng trong tương lai.
 
