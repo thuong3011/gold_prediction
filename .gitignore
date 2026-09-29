@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Data outputs
+/data/raw/*.csv
+/data/processed/*.csv
+/reports/*.csv
+
+# ML artifacts
+/models/*.json
+/models/*.joblib
+/models/*.keras
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db

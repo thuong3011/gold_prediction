@@ -1,0 +1,11 @@
+# Recommended: Python 3.12 or 3.13
+# Current releases verified against official package indexes/docs in Sep 2026.
+yfinance>=1.7,<2
+pandas>=2.2,<3
+numpy>=2.0,<3
+scikit-learn>=1.6,<2
+xgboost>=3.4,<3.5
+tensorflow==2.21.0
+joblib>=1.4,<2
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1
