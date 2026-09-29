@@ -1,4 +1,5 @@
 # Gold Prediction
+<img width="403" height="419" alt="image" src="https://github.com/user-attachments/assets/4fd6cbbf-491b-4d95-81eb-25959c624703" />
 
 Hệ thống **dự đoán giá vàng bằng Machine Learning và Deep Learning**, sử dụng dữ liệu lịch sử giá vàng từ **Yahoo Finance – Gold Futures (`GC=F`)**.
 
